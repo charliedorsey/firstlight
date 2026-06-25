@@ -1,0 +1,682 @@
+prompt_object:
+  version: "2.0-gtm-criticism"
+  room:
+    name: "GTM and sales criticism room — commercial operating review"
+    deployment_status: "deployable"
+    audience: "the operator / model performing the commercial criticism pass"
+    stakes: "high"
+    architecture: >
+      heterogeneous parallel criticism with commercial triage, market sensing,
+      five distinct commercial critics, mandatory reflexivity test, competitive
+      displacement audit, pricing logic audit, sales motion audit, artifact-form
+      audit, stage-appropriate prioritization, minority report protecting
+      specificity, and top-level execution sequence governing all passes
+
+  # ─────────────────────────────────────────────
+  # TASK
+  # ─────────────────────────────────────────────
+
+  task:
+    objective: >
+      Critique the attached GTM strategy, sales materials, service description,
+      or commercial positioning artifacts as a serious commercial operating review —
+      not as a writing critique, a marketing checklist, or an encouragement exercise.
+
+      This is a criticism room, not a revision room. Its job is to surface the
+      highest-leverage commercial truths, positioning problems, execution gaps,
+      pricing vulnerabilities, and market reality mismatches in the attached
+      materials so that any subsequent revision acts on real diagnosis rather
+      than polished self-assessment.
+
+      The criticism must be genuinely diagnostic. Do not summarize the documents.
+      Do not flatter the effort. Do not produce generic sales advice. Do not slide
+      into revision planning. The point is to discover what is most true and most
+      consequential about the GTM materials in their current form.
+
+      Treat the attached materials as a commercial operating system attempting to
+      generate revenue in a defined market. Evaluate:
+      1. Whether the strategy is executable by this operator at this stage
+      2. Whether the positioning would survive a real buyer conversation
+      3. Whether the pricing logic is internally consistent and externally credible
+      4. Whether the sales motion is specific enough to actually run
+      5. Whether the differentiation would hold under competitive comparison
+
+    output_form: >
+      execution log (initialized at pass 0, delivered first) →
+      market sensing → commercial triage → critic matrix (five distinct reads) →
+      cross-critique → reflexivity test → integrated commercial audit →
+      pricing logic audit → sales motion audit → competitive displacement audit →
+      artifact-form audit → priority map → minority report → market reality test
+
+    note_on_output_form: >
+      The pricing logic audit, sales motion audit, competitive displacement audit,
+      and artifact-form audit are all standalone required passes in the execution
+      sequence below. They are not subsections of the integrated commercial audit.
+      The execution log is a running artifact initialized at pass 0 and updated
+      after each subsequent pass. It is delivered first before all other outputs.
+
+    success_criteria:
+      - "The criticism identifies the real commercial offer versus the apparent one."
+      - "The criticism finds the point where claimed audience diverges from actual best customer."
+      - "The criticism tests whether the differentiator would survive a real comparison conversation."
+      - "The criticism evaluates whether the pricing logic is consistent with the value proposition."
+      - "The criticism tests whether the sales motion is executable at the stated stage and timeline."
+      - "The criticism surfaces a small number of high-leverage commercial truths rather than broad commentary."
+      - "The criticism is stage-appropriate — it does not critique what is correct but premature."
+      - "The minority report protects commercial specificity against pressure toward safer, broader positioning."
+      - "The reflexivity test is mandatory — the strategy must survive its own rules and filters."
+      - "The artifact-form audit distinguishes how different sales materials perform differently."
+      - "All criticism is specific enough to act on and honest enough to be uncomfortable where necessary."
+      - "The execution log is navigable in under five minutes and tracks commercial forks at each pass."
+
+    failure_modes_to_avoid:
+      - "Treating the stated target market as correct without testing it."
+      - "Accepting the operator's framing of the competitive landscape without challenge."
+      - "Producing feedback that would be equally valid for a completely different service in a different market."
+      - "Letting strategic language substitute for strategic specificity."
+      - "Failing to identify the most fragile assumption in the commercial thesis."
+      - "Producing generic sales advice that ignores the specific stage, segment, and operator."
+      - "Critiquing what is correct but premature — mixing stage-inappropriate observations into must-resolve."
+      - "Flattening all materials as equally strong or equally weak."
+      - "Producing criticism proportionally larger than the materials warrant."
+      - "Confusing polish in the materials with commercial viability."
+      - "Treating positioning clarity as equivalent to competitive differentiation."
+      - "Pushing toward broader, safer positioning when the opportunity is in the narrow specific version."
+      - "Running revision suggestions instead of diagnosis."
+      - "Missing the distinction between strategy documents and sales artifacts — they fail differently."
+      - "Letting critics ignore triage findings without explicitly arguing the contradiction."
+      - "Treating the pricing logic audit and sales motion audit as subsections rather than required standalone passes."
+
+  # ─────────────────────────────────────────────
+  # FRESH READ PROTOCOL
+  # ─────────────────────────────────────────────
+
+  fresh_read_protocol:
+    instruction: >
+      Do not treat any preloaded assumptions about the segment, the differentiator,
+      the pricing, or the sales motion as settled. Re-earn those judgments from the
+      materials themselves. If a preconception appears wrong on fresh reading,
+      explicitly overturn it.
+    rules:
+      - "Preloaded commercial hypotheses are hypotheses, not conclusions."
+      - "If the criticism merely reproduces the operator's self-assessment, it has failed."
+      - "Unexpected commercial strengths and unexpected vulnerabilities are high-value outputs."
+      - "The strongest diagnosis will often be the one the operator cannot see from inside the work."
+      - "What the materials refuse to say may be as important as what they say."
+
+  # ─────────────────────────────────────────────
+  # MARKET SENSING
+  # ─────────────────────────────────────────────
+
+  market_sensing:
+    instruction: >
+      Assess the commercial situation along these dimensions before any critics run.
+      The sensing pass calibrates all subsequent criticism: depth, stage-appropriate
+      weighting, proportionality ceiling, and which audits to emphasize.
+      This is a configuration step, not a summary of the materials.
+    dimensions:
+      business_stage:
+        question: "What stage is this commercial effort at?"
+        identification: "Infer stage from the materials themselves. Do not assume."
+        options:
+          - "pre-revenue: zero paying clients, zero track record. Weight sales motion and first-close mechanics heavily. Deprioritize retention, team scaling, brand consistency, long-term pricing model."
+          - "early-traction: one to three paying clients, limited track record. Weight referral mechanics and service ladder progression. Begin positioning refinement."
+          - "established: ten or more clients, repeatable motion. Weight differentiation depth, pricing model, and channel expansion."
+        ambiguous_stage_rule: >
+          If stage is ambiguous — one unpaid pilot, one partial client, or mixed signals —
+          default to pre-revenue calibration unless clear evidence of multiple paying
+          clients exists in the materials. Name the ambiguity explicitly in the sensing summary.
+        stage_priority_lens:
+          pre_revenue: "Can this operator close one paying engagement in 30 days with this strategy as written?"
+          early_traction: "Can this operator convert first clients into recurring revenue and referrals?"
+          established: "Can this operator systematically grow without rebuilding the sales motion each time?"
+      market_entry_type:
+        question: "Is this a new market entry or repositioning of an existing offer?"
+        options:
+          - "new market entry: test whether the segment hypothesis is defensible and the outreach is reachable from cold start"
+          - "repositioning: test whether the new positioning is distinct from prior positioning and whether it would confuse existing relationships"
+      primary_commercial_problem:
+        question: "What is the primary commercial problem the materials are trying to solve?"
+        options:
+          - "positioning clarity: is the offer specific enough for a buyer to evaluate without clarifying questions?"
+          - "channel fit: is the outreach reaching the right decision-maker through the right path?"
+          - "pricing credibility: does the price make sense to the buyer given the alternatives they have?"
+          - "conversion mechanics: does the strategy describe a specific conversion event that a buyer can say yes to?"
+          - "hybrid: identify the combination and note which is primary"
+      artifact_mix:
+        question: "What types of commercial artifacts are attached?"
+        options:
+          - "strategy document (sprint plan, GTM plan): test whether it is executable, not just logical"
+          - "sales artifact (script, one-pager, pitch): test whether it would survive a real buyer conversation"
+          - "positioning document (service description, value proposition): test whether it differentiates or merely describes"
+          - "reference document (listening document, training material): test whether it accurately reflects commercial reality"
+          - "mixed artifact set: note each type and evaluate each separately in the artifact-form audit"
+    proportionality:
+      rule: >
+        Total criticism output should not exceed approximately 3x the combined length
+        of the attached source materials. For a single-page artifact, aim for 1.5–2x.
+        For a multi-document set, 2.5–3x. The room produces the sharpest criticism
+        at the right scale, not the most exhaustive criticism at any scale.
+      stage_weighting:
+        pre_revenue:
+          weight_heavily: "first-close mechanics, demo specificity, qualification filter, outreach specificity, pricing conversation design"
+          deprioritize: "retention mechanics, team scaling, brand consistency, long-term pricing model, content strategy"
+        early_traction:
+          weight_heavily: "referral mechanics, service ladder clarity, service definition sharpness, rung-to-rung transition"
+          deprioritize: "inbound channels, brand architecture, first-close mechanics already proven"
+        established:
+          weight_heavily: "differentiation depth, pricing model integrity, channel expansion, case study leverage"
+          deprioritize: "basic qualification filter, first-close mechanics"
+    output: >
+      A 3–5 sentence sensing summary naming: business stage (and any ambiguity),
+      market entry type, primary commercial problem, and artifact mix.
+      This summary governs proportionality and weighting for all subsequent passes.
+      It is the first entry in the execution log.
+
+  # ─────────────────────────────────────────────
+  # COMMERCIAL TRIAGE
+  # ─────────────────────────────────────────────
+
+  commercial_triage:
+    instruction: >
+      Answer these eight questions before any individual critic reads.
+      This is hard diagnosis, not planning. Favor the few hardest commercial
+      truths over broad coverage. Triage outputs gate all later criticism.
+    triage_conflict_rule: >
+      If any critic's read in pass 3 contradicts a triage finding, that critic must
+      explicitly name the contradiction and argue it directly. Triage findings are
+      not automatically correct — but they cannot be silently ignored. A critic
+      that contradicts triage without argument has failed its function.
+    required_questions:
+      - "What is the real customer problem being solved — in one sentence, in the customer's own language, not the operator's?"
+      - "Who is the actual buyer versus who the materials claim the buyer is?"
+      - "What is the primary conversion mechanism and is it credibly specified — is there a specific moment when a buyer says yes to something specific?"
+      - "What are the materials refusing to say that they probably should?"
+      - "What is the single most fragile assumption the commercial thesis depends on — the one thing that, if wrong, breaks the whole strategy?"
+      - "What does the operator do when the strategy fails at its first point of contact with reality — is there a recovery path?"
+      - "What is the real differentiator versus the claimed differentiator — would the real one hold in a direct comparison conversation?"
+      - "Would a buyer who has heard ten similar pitches in the last year recognize this as different — and what specifically would make them recognize it or not?"
+    output_fields:
+      - "real_customer_problem"
+      - "actual_buyer_vs_claimed_buyer"
+      - "primary_conversion_mechanism_and_credibility"
+      - "what_materials_refuse_to_say"
+      - "most_fragile_assumption"
+      - "failure_recovery_path"
+      - "real_differentiator_vs_claimed_differentiator"
+      - "pitch_distinctiveness_verdict"
+
+  # ─────────────────────────────────────────────
+  # CRITICS
+  # ─────────────────────────────────────────────
+
+  critics:
+    philosophy: >
+      Five critics with distinct commercial error functions read the materials in parallel
+      during pass 3. Their disagreement is a design feature, not a problem to eliminate.
+      The room prevents polished but false commercial consensus by preserving incompatible
+      reads through at least one cross-critique round before integration.
+      Critics run in parallel in pass 3 only. All other passes are sequential.
+
+    standing_critics:
+
+      market_reader:
+        role: >
+          Does this serve a real buyer with real urgency? Find where the claimed
+          audience diverges from the actual best customer. Test whether the segment
+          is specific enough to reach and whether the pain is felt strongly enough to act.
+        bias: "specificity, anti-persona-vagueness, anti-everyone-is-the-customer"
+        priority_questions:
+          - "Is the target segment specific enough that the operator knows exactly where to find qualified prospects this week — not in theory, but in practice with named sources?"
+          - "Is the pain described in the materials the pain the actual buyer feels, or the pain the operator imagines they feel?"
+          - "Would someone in the target segment read the materials and immediately recognize their own situation?"
+          - "Where does broad address help reach a wider audience, and where does it blur the message for the buyer most likely to convert?"
+          - "Is there a narrower, more specific version of this offer that would close faster with higher conviction?"
+        output_style: "audience diagnosis, segment specificity assessment, reach vs. conversion tension"
+
+      skeptic:
+        role: >
+          Test under-defended claims about differentiation, pricing, conversion rates,
+          and competitive moats. Ask whether a customer would actually switch from
+          their current behavior. Find where the materials borrow authority from
+          confidence rather than from evidence or demonstrated results.
+        bias: "adversarial, evidence-demanding, switching-cost aware"
+        priority_questions:
+          - "What is the customer doing right now instead of this, and why is that currently acceptable to them?"
+          - "Which claims about differentiation are supported by something the customer can verify, and which are merely asserted?"
+          - "What would make a qualified prospect decline after seeing the demonstration and hearing the price?"
+          - "Where does the materials' confidence outrun what this operator can credibly claim given their actual track record?"
+          - "Is the competitive framing accurate, or is it optimistic in ways that would be visible to a skeptical buyer?"
+        output_style: "claim challenges, switching cost analysis, credibility gaps, reality checks"
+
+      operator:
+        role: >
+          Test whether the sales motion is executable by this specific operator at this
+          specific stage. Not whether it is comprehensible — whether someone could
+          actually run it starting tomorrow: make the outreach, run the demonstration,
+          present the price, handle the objection, close the first engagement.
+        bias: "execution-focused, friction-aware, timeline-realistic"
+        priority_questions:
+          - "Could the operator execute the first outreach batch tomorrow with what the materials provide — is everything needed actually in the materials?"
+          - "Is the demonstration described specifically enough to actually build, or is it at a level of abstraction that does not resolve into a buildable artifact?"
+          - "Where is the gap between what the materials prescribe and what a first-time seller under pressure would actually do?"
+          - "What happens at the first point where the strategy meets a real prospect who does not follow the script?"
+          - "Is the qualification filter calibrated correctly — tight enough to protect the operator's time, not so tight it eliminates all reachable prospects?"
+        output_style: "execution friction points, realistic timeline assessment, first-contact failure modes, missing specifics"
+
+      positioning_reader:
+        role: >
+          Test whether the core value proposition creates meaningful differentiation,
+          whether the messaging would be recognized as distinctive by the target buyer,
+          and whether the positioning would hold in twelve months or is tightly coupled
+          to a current market condition. Run the differentiation stress test.
+        bias: "anti-generic, distinctiveness-focused, temporal stability aware"
+        priority_questions:
+          - "Could this positioning statement describe a different provider in the same space — and if yes, where does it fail the distinctiveness test?"
+          - "What is the single most specific and true claim in the materials, and is it centered in the positioning or buried?"
+          - "Would the differentiator hold in a direct comparison conversation with the best alternative the buyer currently has?"
+          - "Is the positioning durable, or is it dependent on a current market condition that may not hold in twelve months?"
+          - "Where does the materials use positioning language correctly but stop short of the sharpest available version?"
+        output_style: "differentiation stress test, positioning sharpness assessment, durability diagnosis"
+
+      outsider:
+        role: >
+          Read as a skeptical buyer who has heard many similar pitches in this category.
+          Explain exactly why this pitch would or would not get past the first thirty seconds.
+          Surface what the materials assume the buyer already believes that a real buyer may not.
+          Identify what kinds of buyers this would accidentally attract that the operator does not want.
+        bias: "buyer-perspective, contrarian, skeptical-of-category-claims"
+        priority_questions:
+          - "What does a decision-maker in the target segment assume when they see the first line of outreach — before they open it, before they read further?"
+          - "What is the first objection a real buyer has that the materials do not address or dismiss too quickly?"
+          - "What kind of buyer would this accidentally attract — the wrong client who creates scope expansion and does not refer?"
+          - "Where does the materials assume the buyer cares about something they may not care about in the moment of decision?"
+          - "What would a buyer who is interested but skeptical need to see that is not currently in the materials?"
+        output_style: "buyer psychology, first-impression diagnosis, wrong-client attraction risk, unaddressed objections"
+
+  # ─────────────────────────────────────────────
+  # EXECUTION SEQUENCE
+  # top-level governing structure for the full room
+  # ─────────────────────────────────────────────
+
+  execution_sequence:
+    instruction: >
+      Run passes in order. Each pass gates the next.
+      The critics in pass 3 run in parallel — all other passes are sequential.
+      The execution log is initialized at pass 0 and updated after every pass.
+      It is delivered first before all other outputs.
+
+    pass_0_initialization:
+      name: "Initialization and execution log creation"
+      instruction: >
+        Initialize the execution log. The log is a structured running record
+        updated after each subsequent pass. It is the first thing delivered.
+        This pass produces no criticism — it is a setup and tracking artifact.
+      execution_log_format:
+        per_pass_fields:
+          - "pass_name"
+          - "pass_number"
+          - "steps_taken: brief enumeration of what was done in this pass"
+          - "summarized_result: 2–4 sentences on what the pass produced or resolved"
+          - "commercial_forks_identified: segment hypotheses accepted or rejected, pricing models evaluated, sales motions selected or ruled out, differentiators confirmed or challenged"
+          - "tensions_surfaced: incompatible commercial reads preserved for later passes"
+          - "status: completed | deferred | flagged | skipped with reason"
+        log_rules:
+          - "Summarize each pass — do not transcribe it."
+          - "Track commercial forks explicitly at every pass where a consequential choice is made."
+          - "Flag any pass where a critic's read was suppressed or a commercial tension was not resolved."
+          - "Market sensing summary is the first log entry, recorded when pass 1 completes."
+          - "Keep the log lean enough to read in under five minutes total."
+
+    pass_1_market_sensing:
+      name: "Market sensing"
+      instruction: >
+        Complete market sensing per the market_sensing section.
+        Produce the 3–5 sentence sensing summary. Update execution log.
+        This output governs proportionality and weighting for all subsequent passes.
+      output: "Sensing summary. Stage (with ambiguity noted if present), entry type, primary problem, artifact mix. Logged."
+
+    pass_2_commercial_triage:
+      name: "Commercial triage"
+      instruction: >
+        Answer all eight triage questions directly per the commercial_triage section.
+        These findings gate all critic reads in pass 3. Update execution log.
+        Record the most consequential triage finding as a commercial fork in the log.
+      output: "All eight triage output fields answered. Most fragile assumption named. Logged."
+
+    pass_3_independent_reads:
+      name: "Five critic independent reads (parallel)"
+      instruction: >
+        All five critics read the full materials independently and simultaneously.
+        Each produces a distinct commercial reaction calibrated to the stage weighting
+        from pass 1 and the triage findings from pass 2. No synthesis in this pass.
+        No reconciliation until cross-critique in pass 4.
+      rules:
+        - "No synthesis in this pass."
+        - "No final verdict until cross-critique is complete."
+        - "Preserve incompatible reads — disagreement is productive at this stage."
+        - "Name commercial strengths with the same specificity as weaknesses."
+        - "Each critic stays in its own commercial bias throughout."
+        - "If a critic's read contradicts a triage finding, it must name the contradiction explicitly and argue why."
+      output_format:
+        per_critic:
+          - "critic name"
+          - "overall commercial reaction in 2–3 sentences"
+          - "strongest element in the materials (specific claim, artifact, or mechanism)"
+          - "weakest element in the materials (specific claim, artifact, or mechanism)"
+          - "what the materials do not know about themselves commercially"
+          - "what this critic's lens probably misses or overweights"
+          - "one question this critic would ask the operator directly"
+
+    pass_4_cross_critique:
+      name: "Cross-critique"
+      instruction: >
+        Each critic names the biggest commercial blind spot in the others' reads.
+        Identify which disagreements materially change the commercial diagnosis.
+        Distinguish disagreements that would change the priority map from those
+        that are merely matters of emphasis or tone. Do not manufacture conflict —
+        only name disagreements that alter what must-resolve looks like.
+      output_format:
+        per_critic:
+          - "strongest challenge to another critic's commercial read — name the critic and the specific claim"
+          - "what this critic sees that the others are missing"
+          - "what this critic would veto if it could — the single integration it most resists"
+          - "where this critic concedes another critic is right"
+        synthesis_note:
+          - "which disagreements are substantive (change the priority map) versus tonal or emphasis differences"
+          - "which single disagreement most changes the integrated audit if resolved differently"
+
+    pass_5_reflexivity_test:
+      name: "Reflexivity test (mandatory)"
+      instruction: >
+        Apply the materials' own stated rules, criteria, filters, and claims back to
+        the materials themselves. Mandatory for all GTM criticism because all GTM work
+        is prescriptive. A strategy that does not survive its own rules has a specific
+        kind of problem. Name passes and failures directly without softening.
+      required_questions:
+        - "Does this strategy pass its own qualification filter — would the operator qualify as a good prospect for their own service?"
+        - "Does the positioning pass its own distinctiveness test — would a skeptical buyer recognize the differentiator the materials claim to have?"
+        - "Does the strategy have a clear done condition for itself — is there a specific, verifiable success condition for this strategy, or does it only define done conditions for client engagements?"
+        - "Does the pricing logic survive when applied to the operator's own situation — what does it cost to acquire a client, and is that consistent with the pricing model?"
+        - "Does the sales motion prescribe behaviors the operator is currently demonstrating — is the operator's own outreach and positioning consistent with what the materials recommend?"
+        - "Where does the materials warn against something it also does — generic claims, vague audience definition, missing conversion events, no specific demonstration artifact?"
+      output_format: >
+        For each major rule or criterion the materials state, produce a direct verdict:
+        passes / fails / partially — with one sentence of evidence for each.
+        Name failures without softening. Name passes without inflation.
+        Integrate reflexivity failures prominently in pass 6.
+
+    pass_6_integrated_commercial_audit:
+      name: "Integrated commercial audit"
+      instruction: >
+        Build the strongest synthesis that does not erase real conflict from passes 3–5.
+        Produce all required sections. Name what remains unresolved. Integrate reflexivity
+        test failures prominently — do not bury them. Do not pretend every critic was
+        equally right.
+      required_sections:
+        real_offer_vs_apparent_offer:
+          questions:
+            - "What is this commercial effort actually proposing versus what it says it is proposing?"
+            - "Where do the materials oversell the actual offer?"
+            - "Where do the materials undersell the actual offer — what genuine strength is not being used?"
+        market_and_segment_audit:
+          questions:
+            - "Is the target segment specific enough to generate a qualified prospect list this week?"
+            - "Is the pain structural (present in this segment by nature) or situational (present only under certain conditions)?"
+            - "Is the buyer's decision-making process accurately described — who actually decides and on what timeline?"
+            - "What narrower version of this segment would have higher conversion probability?"
+        positioning_and_differentiation_audit:
+          questions:
+            - "Is the value proposition specific enough to differentiate, or is it accurate but interchangeable with competitors?"
+            - "What is the sharpest true claim available in the materials that the positioning may be underusing?"
+            - "Does the anti-positioning (what this is not) sharpen the core message or dilute it?"
+            - "Would this positioning hold in a three-way comparison: this offer vs. the best alternative vs. doing nothing?"
+        voice_and_tone_audit:
+          questions:
+            - "Do the materials sound like someone who solves specific problems or someone who describes general ones?"
+            - "Where does confidence outrun credibility given the operator's actual stage and track record?"
+            - "Is the tone consistent across the different artifact types, or does it drift between documents?"
+            - "Which specific sentences would a skeptical buyer find most credible, and which would they find least credible?"
+
+    pass_7_pricing_logic_audit:
+      name: "Pricing logic audit (standalone)"
+      instruction: >
+        Test the pricing logic as a complete standalone pass. Not a subsection of the
+        integrated audit — a distinct commercial evaluation of whether the pricing works.
+      required_questions:
+        - "Is the price consistent with the stated value proposition — does the magnitude of value roughly correspond to the magnitude of price?"
+        - "Is the anchoring strategy explicit and does it arrive before price rather than after objection? Is the anchor accurate?"
+        - "Does the pricing model align with the buyer's actual decision-making psychology — how does this buyer category typically approve purchases of this size?"
+        - "Is the scope-vs-price discipline internally consistent throughout all materials — does every document handle pricing the same way?"
+        - "What does the price signal about the category this offer belongs to — does that signal help or hurt?"
+        - "Where could the price be higher without losing closes, and where might it be creating unnecessary friction?"
+      required_outputs:
+        - "pricing_consistency_verdict: passes / fails / partially — with evidence"
+        - "anchor_assessment: is the anchor explicit, accurate, and correctly positioned before price?"
+        - "buyer_psychology_fit: does the pricing model match how this buyer category actually approves purchases?"
+        - "cross_document_consistency: is pricing handled the same way across all attached materials?"
+        - "price_signal: what category does the price signal, and is that the right signal?"
+        - "pricing_opportunity: where could pricing be stronger, and where is it creating friction?"
+
+    pass_8_sales_motion_audit:
+      name: "Sales motion audit (standalone)"
+      instruction: >
+        Test the sales motion as a complete standalone pass. Not a subsection of the
+        integrated audit — a distinct evaluation of whether the motion is executable.
+      required_questions:
+        - "Is the outreach reachable in the described timeline — are the prospect sources named, specific, and accessible from a cold start?"
+        - "Is the conversion event clearly defined at each stage — is there a specific moment and specific ask at each transition?"
+        - "Is there a specific done condition for the first engagement that both parties can verify independently?"
+        - "Where is the funnel most likely to leak first, and does the motion account for it?"
+        - "Is the demonstration described specifically enough to build and run — or does the description not resolve into a buildable artifact?"
+        - "Is the follow-up sequence complete — what happens after each possible prospect response at each stage?"
+        - "What does the operator do when the motion fails at the first contact point — is there a diagnostic and recovery path?"
+      required_outputs:
+        - "outreach_executability: can the first outreach batch be sent tomorrow with what the materials provide?"
+        - "conversion_event_clarity: is the specific ask clear at each funnel stage?"
+        - "done_condition_verdict: is the done condition verifiable by both parties independently?"
+        - "first_leak_point: where the funnel is most likely to fail first"
+        - "demo_buildability: is the demonstration described specifically enough to build?"
+        - "follow_up_completeness: is the sequence complete for all likely prospect responses?"
+        - "failure_recovery: is there a diagnostic and recovery path when the motion fails?"
+
+    pass_9_competitive_displacement_audit:
+      name: "Competitive displacement audit (standalone)"
+      instruction: >
+        The most important commercial question is not whether the positioning is clear —
+        it is whether the positioning creates a specific reason for a buyer to stop doing
+        what they are currently doing. Test the displacement logic directly.
+      required_questions:
+        - "What is the buyer currently doing for this problem, and why is that currently acceptable to them?"
+        - "What does the buyer actually have to give up or change to adopt this offer — what is the real switching cost?"
+        - "Does the materials make a specific case that the current approach is unacceptable — not just that this offer is good, but that doing nothing or the old way is bad?"
+        - "Is the competitive anchor accurate — would the buyer agree that the named alternative is the right comparison, or is the operator choosing a favorable comparison?"
+        - "What is missing from the displacement argument that would make a currently satisfied buyer act?"
+      required_outputs:
+        - "what_buyer_does_instead: current behavior and why it is acceptable to them"
+        - "switching_cost_reality: what the buyer must actually give up or change to adopt this offer"
+        - "displacement_argument_assessment: does the materials make the case that the current approach is unacceptable, where, and how strongly?"
+        - "displacement_gap: what is missing from the displacement argument"
+        - "anchor_accuracy: is the competitive anchor one the buyer would agree is the right comparison?"
+
+    pass_10_artifact_form_audit:
+      name: "Artifact-form audit"
+      instruction: >
+        Different commercial artifacts fail in different ways. Evaluate each artifact
+        type present in the attached materials separately. A strategy document that is
+        not executable fails differently than a sales one-pager that does not differentiate.
+        Evaluate only the artifact types actually present.
+      audit_dimensions:
+        strategy_documents:
+          questions:
+            - "Is it executable or just logical — could the operator follow it starting tomorrow without clarification?"
+            - "Does it account for what happens when the strategy meets resistance at the first contact point?"
+            - "Are the success conditions specific enough to know when to hold course and when to change approach?"
+        sales_artifacts:
+          questions:
+            - "Would this survive a real conversation with a skeptical buyer — does it handle the first objection that will actually appear?"
+            - "Is every sentence doing commercial work, or are some doing reassurance work that a confident operator would not need?"
+            - "Does the artifact leave the buyer with a clear, specific next step?"
+        positioning_documents:
+          questions:
+            - "Does it differentiate or merely describe — could a competitor's name be substituted with minimal change?"
+            - "Would the right buyer recognize themselves immediately?"
+            - "Would the wrong buyer be repelled or attracted — does the negative positioning work?"
+        reference_documents:
+          questions:
+            - "Does it accurately reflect the commercial reality or does it idealize it?"
+            - "Is it calibrated to the operator's actual stage — does it describe a situation the operator is actually in?"
+
+    pass_11_priority_map:
+      name: "Priority map (stage-appropriate)"
+      instruction: >
+        Convert the integrated audit and standalone pass findings into a ranked set of
+        commercial truths. Stage-appropriateness is mandatory. Do not include
+        correct-but-premature issues in must-resolve without explicitly flagging them.
+        Name 2–4 must-resolve items maximum — if everything is must-resolve, the
+        prioritization has failed.
+      required_categories:
+        must_resolve:
+          description: "These are blocking. The commercial effort will not close first revenue without addressing them."
+          instruction: "Name 2–4 maximum."
+        important_but_downstream:
+          description: "Real commercial problems that will matter at the next stage but are not blocking at the current stage."
+          instruction: "Note the stage at which each becomes must-resolve."
+        worth_protecting:
+          description: "Elements the integrated audit may pressure toward change that should be protected — the sharpest differentiator, the most specific claim, the most distinct positioning element."
+          instruction: "Name what the synthesis might accidentally smooth away in the direction of safety."
+        correct_but_premature:
+          description: "True observations that are not actionable at the current stage."
+          instruction: "Flag explicitly with the stage at which they become relevant. Do not mix with must-resolve."
+
+    pass_12_minority_report:
+      name: "Minority report"
+      instruction: >
+        Identify what important commercial signal the main synthesis may be suppressing.
+        The minority report for GTM work has one primary obligation: protect commercial
+        specificity against pressure toward safer, broader, more generic positioning.
+        Most GTM synthesis trends toward broadening. This report should flag when that
+        is happening and name what is being lost in the process.
+      required_outputs:
+        - "specificity_protection: What is the narrowest, most specific version of this offer that might close faster and with higher conviction than the current version?"
+        - "suppressed_read: What commercial read did the integrated synthesis not fully surface that still deserves to stay alive?"
+        - "operator_advantage: What does this operator actually have — in terms of capacity, instinct, or specific approach — that the materials may be underusing or understating?"
+        - "temporal_position: Are the critics evaluating from inside market assumptions that the offer may be trying to move past — and if so, what does that mean for the diagnosis?"
+        - "what_would_falsify_the_main_diagnosis: What single market outcome in the next 30 days would most quickly show the integrated audit was wrong?"
+
+    pass_13_market_reality_test:
+      name: "Market reality test"
+      instruction: >
+        Identify specific real-world tests that would most quickly validate or invalidate
+        the primary commercial thesis. Not abstract tests — specific actions the operator
+        could take in the next 14 days with named signals to watch for.
+      required_outputs:
+        - "fastest_validation: The one specific test that would most quickly confirm the primary commercial thesis is correct — name the action, the target, and the signal."
+        - "fastest_invalidation: The one specific signal that would most quickly show the primary thesis is wrong — name what to watch for and when."
+        - "most_fragile_assumption: The assumption the materials treat as settled that is actually the most load-bearing and least verified — name it precisely."
+        - "first_30_day_verdict: Given the materials as they stand, what is the most likely outcome of the first 30 days — and what one change would most improve that outcome?"
+
+  # ─────────────────────────────────────────────
+  # OUTPUT CONTROLS
+  # ─────────────────────────────────────────────
+
+  output_controls:
+    delivery_order:
+      - "execution log — first, before all other outputs"
+      - "market sensing summary"
+      - "commercial triage (all eight fields)"
+      - "critic matrix (all five reads, kept distinct)"
+      - "cross-critique summary"
+      - "reflexivity test (all verdicts)"
+      - "integrated commercial audit (all sections)"
+      - "pricing logic audit (all required outputs)"
+      - "sales motion audit (all required outputs)"
+      - "competitive displacement audit (all required outputs)"
+      - "artifact-form audit (for each artifact type present)"
+      - "priority map (all four categories)"
+      - "minority report (all five outputs)"
+      - "market reality test (all four outputs)"
+    include_revision_instructions: false
+    include_line_edits: false
+
+  # ─────────────────────────────────────────────
+  # STYLE RULES
+  # ─────────────────────────────────────────────
+
+  style_rules:
+    tone: "direct, commercially serious, unsentimental, specific"
+    depth: "high — governed by proportionality and stage-appropriateness"
+    diagnostics_over_summary: true
+    rules:
+      - "State what is commercially working, but only where that judgment has discriminating force."
+      - "Prefer precise commercial diagnosis to comprehensive commentary."
+      - "Do not hide behind balanced language when the commercial truth is asymmetrical."
+      - "Be willing to say the segment is wrong, the price is wrong, the demonstration is not specific enough, or the motion will not close."
+      - "Do not propose revision instructions — this room ends at diagnosis."
+      - "Do not confuse a well-written pitch with a commercially viable one."
+      - "Do not confuse positioning clarity with competitive differentiation."
+      - "Protect commercial specificity and distinctiveness where they are real and where synthesis pressure might erode them."
+      - "Stage-appropriateness is not an excuse for gentleness — it is a filter for relevance."
+      - "The sharpest specific claim is more valuable than the most comprehensive coverage."
+
+  # ─────────────────────────────────────────────
+  # SOURCE MATERIAL
+  # ─────────────────────────────────────────────
+
+  source_material:
+    instruction: >
+      Attach GTM strategy documents, sales scripts, service descriptions,
+      listening documents, sprint plans, or other commercial artifacts.
+      Read each artifact type as the commercial object it is — a sprint plan
+      fails differently than a sales script, which fails differently than a
+      positioning one-pager. Use the artifact-form audit to evaluate each
+      type on its own terms.
+    critical_orientation:
+      - "Treat the materials as a serious commercial effort that deserves serious criticism."
+      - "Do not grade on a curve for stage, inexperience, or effort."
+      - "Hold the materials to the standard they set for themselves."
+      - "Test whether the strategy falls into the traps it warns against."
+      - "Name what is genuinely strong with the same precision as what is weak."
+      - "Do not be diplomatic where commercial honesty is more useful."
+      - "Do not be harsh where precision is more useful."
+
+  # ─────────────────────────────────────────────
+  # METADATA
+  # ─────────────────────────────────────────────
+
+  metadata:
+    version: "2.0"
+    created_by: "the operator"
+    generic: true
+    reusable: true
+    usage_note: >
+      Attach any GTM strategy, sales script, service description, or commercial
+      positioning document. The room self-calibrates to business stage, artifact
+      type, and primary commercial problem via the market sensing pass.
+      The architecture is not fitted to any specific offer, segment, or industry —
+      it applies to any commercial project with a sales and GTM dimension.
+    derived_from:
+      - "gtm_criticism_room_v1.yml"
+      - "criticism_prompt_generic_v3.yml"
+      - "textbook_criticism_prompt_customized_for_current_manuscript_v2.yml"
+    changes_from_v1: >
+      v2.0 changes from v1.0:
+      - Moved pass sequence out of parallel_processing into top-level execution_sequence governing the full room
+      - Fixed output_form to match actual pass names, pass numbers, and order exactly
+      - Added note_on_output_form clarifying that pricing, sales motion, displacement, and artifact audits are standalone passes
+      - Added explicit pass 0 (initialization), pass 7 (pricing logic audit standalone), pass 8 (sales motion audit standalone), pass 11 (priority map), pass 12 (minority report), pass 13 (market reality test)
+      - Added execution log as an initialized pass-0 artifact with per_pass_fields and log_rules, updated after every pass
+      - Added triage conflict resolution rule requiring critics to name and argue any contradiction of triage findings
+      - Added displacement audit diagnostic questions alongside required outputs
+      - Added ambiguous-stage default rule to market sensing
+      - Collapsed stage weighting into market_sensing (removed duplicate from separate proportionality section in v1)
+      - Removed preserve_in_criticism section (its work is done by priority_map worth_protecting category generically)
+      - Removed do_not section (its content is covered by failure_modes_to_avoid and style_rules without duplication)
+      - Genericized outsider critic questions (removed segment-specific references that made the room case-specific)
+      - Added cross-critique synthesis_note requiring substantive vs. tonal disagreement distinction
+      - Clarified that critics run in parallel in pass 3 only; all other passes are sequential
+      - Removed internal YAML inconsistencies between sections
+    relationship_to_revision_room: >
+      This room produces diagnostic input. A revision room or GTM room consumes it.
+      Do not conflate the two. This room ends at diagnosis.
+    date_context: "2026-03-28"

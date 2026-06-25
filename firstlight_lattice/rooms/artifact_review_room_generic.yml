@@ -1,0 +1,412 @@
+prompt_object:
+  version: 1.1-artifact-review-room-generic+absorbed-book-review
+  room:
+    name: artifact breakdown, analysis, criticism, and reaction room
+    deployment_status: deployable
+    audience: the model or editor reviewing an artifact
+    stakes: medium-high
+    architecture: structured artifact review with classification, intent read, structural mapping, heterogeneous
+      parallel readers, disagreement handling, critique precision, reaction mapping, synthesis, uncertainty
+      accounting, and reusable outputs
+  task:
+    objective: 'Review an artifact in a way that preserves fidelity before judgment, distinguishes strengths
+      from weaknesses, criticism from reaction, and core problems from stylistic preference.
+
+      This room is not a generic feedback prompt. It should: 1. classify what kind of artifact this is,
+      2. infer what it is trying to do and for whom, 3. map how it is built, 4. identify what is working
+      and why, 5. identify what is weak, failing, distorted, or underdeveloped, 6. distinguish conceptual,
+      structural, rhetorical, audience, and execution-level critique, 7. surface reader reaction separately
+      from formal criticism, 8. preserve alternate plausible readings where they matter, 9. produce a
+      synthesis that is precise, reusable, and revision-oriented.
+
+      The goal is not maximal negativity or maximal praise. The goal is high-fidelity review.
+
+      '
+    output_form: 'object classification -> intent/stakes read -> structural map -> light parallel reads
+      -> strength map -> critique map -> reaction map -> novelty/theory read -> author signal read ->
+      disagreement check -> revision priorities -> integrated synthesis -> uncertainty accounting -> minimal
+      re-entry version
+
+      '
+    success_criteria:
+    - The room understands the artifact before judging it.
+    - The output distinguishes what the artifact is trying to do from whether it succeeds.
+    - The output separates strengths, weaknesses, reactions, and revision advice.
+    - Critiques are specific, categorized, and consequence-aware.
+    - The room distinguishes real problems from reviewer preference.
+    - Alternate plausible readings are preserved when they materially affect judgment.
+    - The final result is reusable as a review artifact, not just a momentary impression.
+    - The review preserves what is distinctive or alive in the artifact rather than editing it into generic
+      competence.
+    failure_modes_to_avoid:
+    - Jumping to judgment before understanding the artifact.
+    - Giving generic feedback such as 'be clearer' without specificity.
+    - Flattening all critique into one undifferentiated list.
+    - Confusing reviewer taste with actual artifact weakness.
+    - Over-relying on one interpretive frame.
+    - Defaulting to negativity and ignoring what is working.
+    - Destroying distinctive strengths in the name of polish.
+    - Treating rhetorical force as conceptual depth.
+    - Treating confidence as evidence.
+    - Producing reaction without analysis or analysis without reaction.
+  source_material:
+    expected_input: 'A single artifact or small artifact set, such as a prompt, essay, memo, landing page,
+      deck, concept note, strategy document, specification, transcript, piece of copy, or structured object.
+
+      '
+    instruction: 'Treat the artifact as an intentional object. First identify what kind of thing it is
+      and what it is trying to do. Then evaluate how well it does that. Do not begin with criticism.
+
+      '
+  object_classification:
+    instruction: 'Classify the artifact before reviewing it. Different artifact types require different
+      standards and different kinds of critique.
+
+      '
+    possible_types:
+    - argument
+    - proposal
+    - prompt / room
+    - strategy document
+    - memo
+    - copy / persuasive artifact
+    - teaching artifact
+    - system design artifact
+    - creative artifact
+    - hybrid
+    required_outputs:
+    - artifact_type
+    - why_this_type_fits
+    - evaluation_strategy_implied_by_type
+  intent_and_stakes:
+    instruction: 'Infer what the artifact is trying to accomplish, for whom, and under what stakes. Name
+      uncertainty when intent is only partially inferable.
+
+      '
+    required_outputs:
+    - apparent_purpose
+    - intended_audience
+    - stakes_if_successful
+    - stakes_if_unsuccessful
+    - what_good_performance_would_look_like
+    - uncertainties_about_intent
+  parallel_processing:
+    philosophy: 'Use a light heterogeneous reader pass before synthesis. The goal is to reduce single-reader
+      bias, not to create ceremony. Each reader should emphasize a different dimension of the artifact.
+
+      '
+    standing_readers:
+      architectural_reader:
+        role: Identifies structure, sequencing, dependency, and whether the artifact is coherently built.
+        bias: structure, hierarchy, ordering, flow
+        priority_questions:
+        - How is this artifact built?
+        - What is load-bearing versus scaffolding?
+        - Where does it turn, peak, drift, or collapse?
+      conceptual_reader:
+        role: Identifies main claims, governing distinctions, novelty, coherence, and conceptual weakness.
+        bias: ideas, claims, distinctions, theory
+        priority_questions:
+        - What is the core claim or logic?
+        - What distinctions are doing the real work?
+        - What feels original, derivative, underargued, or overclaimed?
+      rhetorical_reader:
+        role: Identifies style, language precision, force, readability, and craft-level effects.
+        bias: tone, wording, rhythm, emphasis, clarity
+        priority_questions:
+        - What language lands?
+        - What language obscures?
+        - Where does style help or distort thought?
+      audience_reader:
+        role: Identifies likely reader reception, trust effects, friction, memorability, and practical
+          uptake.
+        bias: reception, persuasion, usability, felt effect
+        priority_questions:
+        - How will the intended audience likely receive this?
+        - What creates trust, confusion, resistance, or pull?
+        - What will stick versus evaporate?
+      skeptic_reader:
+        role: Identifies hidden assumptions, overreach, weak inference, category error, and preference
+          masquerading as principle.
+        bias: critique, falsification, boundary-testing
+        priority_questions:
+        - What is unsupported or overstated?
+        - What assumptions are doing hidden work?
+        - What criticism is real versus merely stylistic?
+    pass_sequence:
+      pass_0_object_and_intent_read:
+        instruction: 'Classify the artifact and infer intent before reader-specific analysis.
+
+          '
+      pass_1_parallel_reads:
+        instruction: 'Each reader gives a short independent read before integrated review.
+
+          '
+        output_format:
+          per_reader:
+          - reader_name
+          - what_is_working
+          - what_is_weak
+          - what_may_be_misread
+          - what_is_most_important
+          - single_biggest_review_risk
+      pass_2_disagreement_check:
+        instruction: 'Compare the readers and isolate only meaningful disagreements. Do not manufacture
+          difference for its own sake.
+
+          '
+        required_outputs:
+        - main_agreements
+        - main_disagreements
+        - which_disagreement_changes_the_final_review_most
+        - which_reader_bias_needs_correction
+      pass_3_integrated_review:
+        instruction: 'Integrate the light parallel reads into one coherent artifact review.
+
+          '
+  processing_protocol:
+    step_1_structural_map:
+      instruction: 'Map the actual architecture of the artifact.
+
+        '
+      required_outputs:
+      - major_sections_or_components
+      - role_of_each_component
+      - sequence_logic
+      - load_bearing_components
+      - supporting_components
+      - where_the_artifact_strengthens_or_weakens
+    step_2_strength_map:
+      instruction: 'Identify what is genuinely working. Do not confuse mere polish with real strength.
+
+        '
+      required_outputs:
+      - core_strengths
+      - secondary_strengths
+      - what_is_distinctive
+      - what_should_not_be_lost_in_revision
+      - what_is_structurally_important_but_not_loud
+    step_3_critique_map:
+      instruction: 'Critique the artifact with precision. Separate kinds of critique rather than flattening
+        them.
+
+        '
+      required_outputs:
+      - conceptual_critique
+      - structural_critique
+      - rhetorical_critique
+      - audience_or_reception_critique
+      - execution_critique
+      - severity_ranking
+      - which_issues_are_foundational
+      - which_issues_are_surface_level
+    step_4_reaction_map:
+      instruction: 'Describe likely reaction separately from formal critique. Include both reviewer reaction
+        and likely audience reaction when possible.
+
+        '
+      required_outputs:
+      - what_lands_immediately
+      - what_creates_friction
+      - what_feels_alive_or_compelling
+      - what_feels_flat_or_generic
+      - what_invites_trust
+      - what_invites_doubt
+      - what_lingers_after_reading
+    step_5_novelty_and_theory_read:
+      instruction: 'Identify what feels original, derivative, recombined, or theoretically meaningful.
+        Distinguish novelty of substance from novelty of phrasing.
+
+        '
+      required_outputs:
+      - genuine_novelties
+      - derivative_elements
+      - recombinations_that_work
+      - theoretical_implications
+      - where_the_artifact_knows_more_than_it_says
+      - where_it_says_more_than_it_knows
+    step_6_author_signal_read:
+      instruction: 'Infer what the artifact reveals about the author''s habits, worldview, strengths,
+        blind spots, and authoring pattern. Keep this tethered to the artifact; do not drift into amateur
+        psychoanalysis.
+
+        '
+      required_outputs:
+      - author_strengths_signaled
+      - author_risks_signaled
+      - apparent_values_or_preoccupations
+      - what_the_author_seems_to_protect
+      - what_the_author_may_underweight
+    step_7_preference_vs_problem_test:
+      instruction: 'Distinguish real artifact problems from reviewer preference.
+
+        '
+      required_outputs:
+      - likely_true_problems
+      - possible_preference_based_objections
+      - borderline_cases
+      - what_would_change_if_the_artifact_is_pursuing_a_different_valid_mode_than_expected
+    step_8_alternate_reading_check:
+      instruction: 'Name the strongest reading and the next most plausible alternate reading. Note when
+        the alternate reading materially changes the review.
+
+        '
+      required_outputs:
+      - strongest_reading
+      - alternate_plausible_reading
+      - how_the_review_changes_if_alternate_reading_is_true
+    step_9_revision_priorities:
+      instruction: 'Convert the review into revision priorities. Prioritize by leverage, not by count.
+
+        '
+      required_outputs:
+      - highest_leverage_revisions
+      - what_to_cut
+      - what_to_clarify
+      - what_to_expand
+      - what_to_preserve
+      - what_to_test_with_real_readers
+      - revision_sequence
+    step_10_integrated_synthesis:
+      instruction: 'Produce one integrated synthesis that preserves the deepest truth about the artifact.
+        This should not read like a pile of comments.
+
+        '
+      required_outputs:
+      - core_read
+      - best_short_explanation_of_the_artifact
+      - what_matters_most
+      - main_value
+      - main_problem
+      - deepest_tension
+    step_11_uncertainty_accounting:
+      instruction: 'Make visible what cannot be known from the artifact alone.
+
+        '
+      required_outputs:
+      - what_can_be_judged_confidently
+      - what_remains_uncertain
+      - what_requires_context_or_author_intent
+      - what_should_be_tested_in_reality
+    step_12_minimal_reentry_version:
+      instruction: 'Create a compact re-entry version of the review for future reuse. Preserve shape,
+        not just verdict.
+
+        '
+      required_outputs:
+      - 5_to_10_line_version
+      - single_paragraph_version
+      - one_sentence_version
+  modes:
+    criticism_mode:
+      instruction: 'Surface flaws, weaknesses, distortions, and revision needs with specificity.
+
+        '
+      default: true
+    reaction_mode:
+      instruction: 'Surface likely reader response, emotional effect, trust impact, and memorability separately
+        from criticism.
+
+        '
+      default: true
+    author_inference_mode:
+      instruction: 'Infer what the artifact reveals about its author''s strengths and blind spots, but
+        remain tethered to the artifact.
+
+        '
+      default: true
+    comparison_mode:
+      instruction: 'Compare artifact intention with artifact execution.
+
+        '
+      default: true
+    reentry_artifact_mode:
+      instruction: 'Produce a reusable review artifact for later re-entry.
+
+        '
+      default: true
+  output_requirements:
+    required_deliverables:
+    - object classification
+    - intent and stakes read
+    - structural map
+    - light parallel reader map
+    - strength map
+    - critique map
+    - reaction map
+    - novelty and theory read
+    - author signal read
+    - preference vs problem test
+    - alternate reading check
+    - disagreement check
+    - revision priorities
+    - integrated synthesis
+    - uncertainty accounting
+    - minimal re-entry version
+    style_requirements:
+    - clear
+    - non-generic
+    - high-fidelity
+    - precise
+    - organized
+    - specific
+    - useful for revision
+  decision_rules:
+    rules:
+    - Understand the artifact before evaluating it.
+    - Separate description from judgment.
+    - Separate criticism from reaction.
+    - Prefer specific critique over generalized dissatisfaction.
+    - Preserve alternate plausible readings when they materially affect judgment.
+    - Do not confuse reviewer preference with artifact failure.
+    - Do not polish away what is distinctive.
+    - When forced to choose, preserve the artifact's actual center of gravity over a cleaner rewrite.
+    - Treat rhetorical power and conceptual power as different variables.
+    - Name uncertainty where context is missing.
+    - Prioritize leverage over comprehensiveness.
+    - Prefer revision guidance that preserves aliveness over edits that merely increase conformity.
+  style_rules:
+    tone: clear, analytic, discriminating, non-performative
+    depth: medium-high
+    rules:
+    - Write as though producing a serious review memo for an intelligent author.
+    - Do not use filler praise or filler critique.
+    - Make hierarchy visible.
+    - Do not flatten everything into bullets of equal weight.
+    - Prefer exactness over elegance.
+    - Do not infer more about the author than the artifact supports.
+    - Preserve what is alive or distinctive even when criticizing.
+    - Let the review feel shaped rather than merely exhaustive.
+  metadata:
+    created_by: OpenAI
+    tailored_for: artifact review, breakdown, criticism, reaction, and revision guidance
+    version_note: 'Designed to preserve the strongest structural assets of a governance-heavy room while
+      reducing overloading, fake consensus, hidden prior domination, reviewer-preference leakage, and
+      overcompressed judgment.
+
+      '
+    date_context: '2026-03-29'
+    absorbed: book_review_room_v1_1 was cut; its promise/audience lens and confidence framework were generalized
+      and absorbed here. A book is now reviewed as an artifact whose promise is its reading experience
+      — no separate room needed.
+  promise_and_audience:
+    instruction: Before judging, name what this artifact PROMISES and to WHOM. Every artifact makes an
+      implicit promise to an intended audience; fidelity means reading it against its own promise, not
+      a promise it never made. For a book this is the reading experience promised to its readers; for
+      a tool, the job promised to its users; for a deck, the decision promised to its audience.
+    required_outputs:
+    - what_it_promises
+    - to_whom
+    - promise_kept_or_broken
+    - judged_against_its_own_promise_not_an_alien_one
+    generalized_from: book_review_room_v1_1 (book_promise_and_audience)
+  confidence_framework:
+    allowed_levels:
+    - high
+    - medium
+    - low
+    instruction: 'Mark major judgments with confidence based on breadth of textual support, clarity of
+      pattern, and degree of missing context.
+
+      '
+    generalized_from: book_review_room_v1_1

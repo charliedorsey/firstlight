@@ -1,0 +1,13 @@
+# FirstLight dependencies.
+#
+# These are required ONLY for the one-time corpus analysis (the "build" arm:
+# semantic_lattice, dim_*, move_align/move_dimensions, router) that reads your
+# skills library and discovers its dimensions.
+#
+# The per-turn dashboard (the "read" arm: turn_dashboard.py and friends) is pure
+# Python standard library and needs none of these.
+#
+# Install:  python3 -m pip install -r requirements.txt
+
+numpy>=1.21
+scikit-learn>=1.0

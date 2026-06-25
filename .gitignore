@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.venv/
+venv/
+*.egg-info/
+
+# build cache (regenerate with ./run.sh build)
+.firstlight_cache_*.json
+*.egg-info
+.pytest_cache/
+.firstlight_cache_*
