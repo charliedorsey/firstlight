@@ -1,12 +1,6 @@
 # FirstLight Lattice
 
-**What it is:** a real, runnable tool built on the same dimensional-analysis pipeline that
-powers the chess engine, turned onto **prompts and Claude Code skills**. Before a request is acted on,
-it reads the prompt and returns an advisory dashboard: which skill actually *fits* it (routed by
-deliverable, not just vocabulary), where the prompt sits on a set of discovered dimensions with a
-confidence per dimension, what response posture and compute budget it warrants, and which failure modes
-that coordinate tends to trigger. It runs outside the model at zero token cost and never decides — it
-reports and hands the choice back.
+**What it is:** a real, runnable tool built on a dimensional-analysis pipeline, aimed at **prompts and Claude Code skills**. Before a request is acted on, it reads the prompt and returns an advisory dashboard: which skill actually *fits* it (routed by deliverable, not just vocabulary), where the prompt sits on a set of discovered dimensions with a confidence per dimension, what response posture and compute budget it warrants, and which failure modes that coordinate tends to trigger. It runs outside the model at zero token cost and never decides — it reports and hands the choice back.
 
 ## The 30-second version (two commands)
 
@@ -92,9 +86,9 @@ distress"), the compute budget, the suggested rooms, and watch-flags for the fai
 coordinate invites. It flags its own thin reads (a dimension on a single keyword is marked brittle, not
 asserted) rather than projecting false confidence.
 
-## The architecture (same engine as the chess work)
+## The architecture
 
-The chess engine reads a *position* across six dimensions, lets a council of readers vote, and emits a conviction. FirstLight reads a *prompt* the same way — same kernel, different manifold. **Build:** every room/skill is read through three arms — semantic (TF-IDF->SVD subject axes), structural (surface shape), and **move** (a profile over ~10 named cognitive moves: CONSTRAIN, EVIDENCE, VERIFY, FORMAT, TONE, EXEMPLAR...) -> a 13-axis candidate pool -> select 6 orthogonal axes, re-keyed onto the same `[-1,+1]` ELM lattice the engine uses. **Read:** route to the closest room with an honest confidence flag, project the live prompt through the *same* fitted transforms, and let a council read conviction. Every output is stamped `claim_status: advisory_not_truth`.
+FirstLight reads a *prompt* across six dimensions, lets a council of readers vote, and emits a conviction. **Build:** every room/skill is read through three arms — semantic (TF-IDF->SVD subject axes), structural (surface shape), and **move** (a profile over ~10 named cognitive moves: CONSTRAIN, EVIDENCE, VERIFY, FORMAT, TONE, EXEMPLAR...) -> a 13-axis candidate pool -> select 6 orthogonal axes, re-keyed onto the `[-1,+1]` ELM lattice. **Read:** route to the closest room with an honest confidence flag, project the live prompt through the *same* fitted transforms, and let a council read conviction. Every output is stamped `claim_status: advisory_not_truth`.
 
 The standout capability: **point it at your own library and the dimensions re-discover themselves from your corpus** — it renames the axes to fit your skills/prompts and surfaces the cognitive moves inside them. That makes the otherwise-tacit "dense context packet" method legible and measurable in your toolkit's terms.
 
