@@ -1,9 +1,12 @@
 # FirstLight Lattice
 
 **What it is:** a real, runnable tool built on the same dimensional-analysis pipeline that
-powers the chess engine, turned onto **prompts and Claude Code skills**. It reads an incoming
-prompt against your skill library and tells you which skill it most resembles, the prompt's
-character on a set of discovered dimensions, and how confident the match is.
+powers the chess engine, turned onto **prompts and Claude Code skills**. Before a request is acted on,
+it reads the prompt and returns an advisory dashboard: which skill actually *fits* it (routed by
+deliverable, not just vocabulary), where the prompt sits on a set of discovered dimensions with a
+confidence per dimension, what response posture and compute budget it warrants, and which failure modes
+that coordinate tends to trigger. It runs outside the model at zero token cost and never decides — it
+reports and hands the choice back.
 
 ## The 30-second version (two commands)
 
@@ -71,6 +74,23 @@ directly (see the JSON shape under "Machine-readable output" below).
 Point `--rooms` at a folder with **no** `SKILL.md` and the loader falls back to
 generic mode — every file becomes its own record — so plain prompt libraries work
 unchanged.
+
+## The two things it actually does
+
+**1 · Routes by deliverable, not by vocabulary (two-stage routing).** A flat similarity score lets a
+strong word-match override a categorical mismatch — "write me a poem about debugging" routes to a debug
+skill on the word "debugging." FirstLight routes in two stages: a **deliverable gate**
+(`pure_read/deliverable_gate.py`) first vetoes skills whose *output world* (technical / human / creative)
+is categorically wrong for what's asked, then semantic discrimination ranks only the survivors. A
+categorically-wrong skill can't win even if its words match, because it's removed before scoring. See
+`docs/TWO_STAGE_ROUTING.md`.
+
+**2 · Reads the turn as a calibrated coordinate (the dashboard).** Beyond routing, `core/turn_dashboard.py`
+places the request on six axes — stakes, register, form, openness, urgency, scope — each with its own
+confidence, and surfaces the cross-term tensions ("big ask, little time"; "emotional AND urgent: possible
+distress"), the compute budget, the suggested rooms, and watch-flags for the failure modes that
+coordinate invites. It flags its own thin reads (a dimension on a single keyword is marked brittle, not
+asserted) rather than projecting false confidence.
 
 ## The architecture (same engine as the chess work)
 
