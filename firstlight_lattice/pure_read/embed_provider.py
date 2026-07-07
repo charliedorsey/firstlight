@@ -43,13 +43,13 @@ def ternlight_available():
     return os.path.isdir(pkg) and os.path.isfile(_BRIDGE)
 
 
-def _ternlight_call(payload):
+def _ternlight_call(payload, timeout=30):
     """Send JSON to the bridge script, return parsed JSON output."""
     r = subprocess.run(
         ['node', _BRIDGE],
         input=json.dumps(payload).encode('utf-8'),
         capture_output=True,
-        timeout=60,
+        timeout=timeout,
     )
     if r.returncode != 0:
         raise RuntimeError(r.stderr.decode('utf-8', errors='replace').strip())
@@ -71,10 +71,11 @@ def ternlight_provider():
 def ternlight_batch(texts):
     """Embed multiple texts in one subprocess call (one WASM load).
     Returns list[list[float]], one vector per input text.
-    Raises if ternlight is not available."""
+    Timeout scales with chunk count (~150ms per chunk observed)."""
     if not ternlight_available():
         raise RuntimeError('ternlight not available')
-    return _ternlight_call(texts)
+    timeout = max(30, len(texts) // 4)
+    return _ternlight_call(texts, timeout=timeout)
 
 
 # ── chunking (for skills longer than ternlight's 128-token window) ──────────

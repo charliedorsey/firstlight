@@ -17,9 +17,12 @@ async function main() {
   const texts = typeof input === 'string' ? [input] : input;
 
   const vectors = [];
-  for (const text of texts) {
-    const vec = await embed(text);
+  for (let i = 0; i < texts.length; i++) {
+    const vec = await embed(texts[i]);
     vectors.push(Array.from(vec));
+    if (texts.length > 10 && (i + 1) % 50 === 0) {
+      process.stderr.write(`  ternlight: ${i + 1}/${texts.length} chunks embedded\n`);
+    }
   }
 
   const output = typeof input === 'string' ? vectors[0] : vectors;
