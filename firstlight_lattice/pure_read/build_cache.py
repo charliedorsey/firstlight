@@ -115,24 +115,55 @@ def build(folder, out_path):
             'doc_rows': _sparse_rows(R.char_X, len(R.char_vec.vocabulary_)),
         }
 
-    # OPTIONAL embedding tier: if an embedding provider is configured (env vars),
-    # embed each skill's text ONCE here and store L2-normalized vectors so the read
-    # arm can cosine against them. Skipped silently if not configured — the cache
-    # is fully usable on the lexical tiers without it.
+    # OPTIONAL embedding tier: if an embedding provider is configured, embed each
+    # skill's text and store L2-normalized vectors so the read arm can cosine
+    # against them. Two paths:
+    #   - ternlight (local): chunk each skill into ~100-token windows (ternlight's
+    #     128-token limit means tail-end sections like output specs would be lost
+    #     without chunking), batch-embed all chunks in one subprocess call, store
+    #     ALL chunk vectors + a skill-index map. Read arm max-pools per skill.
+    #   - API provider: one vector per skill (API providers typically have higher
+    #     token limits; per-call cost makes chunking expensive).
+    # Skipped silently if nothing is configured.
     try:
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
         import embed_provider as EP
-        provider = EP.default_provider()
-        if provider is not None:
-            import math
+        import math
+
+        if EP.ternlight_available():
+            all_chunks = []
+            skill_map = []
+            for idx, n in enumerate(R.names):
+                text = R.texts[R.names.index(n)]
+                chunks = EP.chunk_text(text)
+                for chunk in chunks:
+                    all_chunks.append(chunk)
+                    skill_map.append(idx)
+            raw_vecs = EP.ternlight_batch(all_chunks)
             vecs = []
-            for n in R.names:
-                v = provider(R.texts[R.names.index(n)])
+            for v in raw_vecs:
                 nn = math.sqrt(sum(x * x for x in v)) or 1.0
                 vecs.append([x / nn for x in v])
             cache['embed_vectors'] = vecs
+            cache['embed_skill_map'] = skill_map
             cache['embed_dim'] = len(vecs[0]) if vecs else None
-            sys.stderr.write(f'  + embedded {len(vecs)} skills (dim {cache["embed_dim"]})\n')
+            cache['embed_chunked'] = True
+            sys.stderr.write(
+                f'  + embedded {len(R.names)} skills as {len(vecs)} chunks '
+                f'(dim {cache["embed_dim"]}, ternlight)\n')
+        else:
+            provider = EP.default_provider()
+            if provider is not None:
+                vecs = []
+                for n in R.names:
+                    v = provider(R.texts[R.names.index(n)])
+                    nn = math.sqrt(sum(x * x for x in v)) or 1.0
+                    vecs.append([x / nn for x in v])
+                cache['embed_vectors'] = vecs
+                cache['embed_dim'] = len(vecs[0]) if vecs else None
+                cache['embed_chunked'] = False
+                sys.stderr.write(
+                    f'  + embedded {len(vecs)} skills (dim {cache["embed_dim"]})\n')
     except Exception as e:
         sys.stderr.write(f'  (embedding tier skipped: {e})\n')
 

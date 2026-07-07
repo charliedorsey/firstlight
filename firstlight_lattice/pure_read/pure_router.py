@@ -272,7 +272,16 @@ def _dense_cosine(pvec, doc_vecs):
 
 def embed_scores(prompt, cache, provider):
     """provider: callable(text)->list[float], or None. Returns per-skill cosine
-    scores, or None if embeddings aren't available/usable."""
+    scores (one float per skill in cache['names']), or None if embeddings
+    aren't available/usable.
+
+    Handles two cache formats:
+      - chunked (embed_chunked=True): multiple vectors per skill, max-pool.
+        The best-matching chunk determines a skill's score, so tail-end
+        sections (output specs, verification steps) contribute even though
+        ternlight's 128-token window can't see the whole skill at once.
+      - flat (embed_chunked=False or absent): one vector per skill, direct cosine.
+    """
     emb = cache.get('embed_vectors')
     if not emb or provider is None:
         return None
@@ -282,6 +291,18 @@ def embed_scores(prompt, cache, provider):
         return None
     if not pvec or len(pvec) != cache.get('embed_dim', len(pvec)):
         return None
+
+    if cache.get('embed_chunked'):
+        skill_map = cache.get('embed_skill_map', [])
+        n_skills = len(cache['names'])
+        cosines = _dense_cosine(pvec, emb)
+        scores = [0.0] * n_skills
+        for ci, cos in enumerate(cosines):
+            si = skill_map[ci]
+            if cos > scores[si]:
+                scores[si] = cos
+        return scores
+
     return _dense_cosine(pvec, emb)
 
 

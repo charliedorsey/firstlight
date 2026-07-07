@@ -11,3 +11,7 @@ venv/
 *.egg-info
 .pytest_cache/
 .firstlight_cache_*
+
+# ternlight embedding tier (npm install in pure_read/)
+node_modules/
+package-lock.json
