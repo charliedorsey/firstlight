@@ -134,7 +134,7 @@ def build(folder, out_path):
             all_chunks = []
             skill_map = []
             for idx, n in enumerate(R.names):
-                text = R.texts[R.names.index(n)]
+                text = R.texts[idx]
                 chunks = EP.chunk_text(text)
                 for chunk in chunks:
                     all_chunks.append(chunk)

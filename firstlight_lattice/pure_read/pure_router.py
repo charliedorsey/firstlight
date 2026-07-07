@@ -296,7 +296,7 @@ def embed_scores(prompt, cache, provider):
         skill_map = cache.get('embed_skill_map', [])
         n_skills = len(cache['names'])
         cosines = _dense_cosine(pvec, emb)
-        scores = [0.0] * n_skills
+        scores = [float('-inf')] * n_skills
         for ci, cos in enumerate(cosines):
             si = skill_map[ci]
             if cos > scores[si]:
